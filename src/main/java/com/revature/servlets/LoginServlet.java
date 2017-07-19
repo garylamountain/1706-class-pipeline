@@ -13,42 +13,41 @@ import com.revature.model.BankUser;
 import com.revature.service.AppService;
 
 @WebServlet("login")
-public class LoginServlet {
+public class LoginServlet extends HttpServlet {
 
-	
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("LoginServlet -GET"); 
-		req.getRequestDispatcher("login.html").forward(req, resp);
-	}
-	
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("LoginServlet -POST");
+		
+		//Create a BankUser and populate it with the information given from Client-Side
 		BankUser clientUser = new BankUser();
 		
+		//Pulled the username and password by the name attribute in the html form
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
-		
 		
 		clientUser.setUsername(username);
 		clientUser.setPassword(password);
 		
+		//Validate the credentials entered by the clientUser compared to record stored in the db
+										//validateUser returns
+											//null if credentials don't match
+											//a valid  clientUser record if credentials do match
 		clientUser = new AppService().validateUser(clientUser);
 		
-		
-		System.out.println("The user enter: " + username + " & " + password);
+		//Null Check of clientUser
 		if(clientUser != null){
-			
-			HttpSession session = req.getSession(); 
+			HttpSession session = req.getSession();
 			
 			session.setAttribute("user", clientUser);
-
+			
 			req.getRequestDispatcher("app.html").forward(req, resp);
 		}else{
 			resp.sendRedirect("login.html");
 		}
 		
+		
 	}
+	
 }

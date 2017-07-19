@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class AjaxDashboardServlet
  */
-@WebServlet("ajaxDashboard")
+@WebServlet("getDashboardView")
 public class AjaxDashboardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -27,9 +27,10 @@ public class AjaxDashboardServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("features/dashboard/dashboard.html").forward(request, response);
+			System.out.println("AjaxDashboardServlet -Get");
+			request.getRequestDispatcher("features/dashboard/dashboard.html").forward(request, response);
+	
 	}
 
-	
 
 }

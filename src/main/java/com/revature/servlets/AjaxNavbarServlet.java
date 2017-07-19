@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class AjaxNavbarServlet
  */
-@WebServlet("ajaxNavbar")
+@WebServlet("getNavbar")
 public class AjaxNavbarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -20,13 +20,14 @@ public class AjaxNavbarServlet extends HttpServlet {
      */
     public AjaxNavbarServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("AjaxNavBar -GET");
+		//forward the request & response to the navbar.html
 		request.getRequestDispatcher("features/navbar/navbar.html").forward(request, response);
 	}
 

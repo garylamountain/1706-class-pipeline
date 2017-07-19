@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AjaxDoTransactionServlet
+ * Servlet implementation class AjaxTxServlet
  */
-@WebServlet("ajaxDoTransaction")
-public class AjaxDoTransactionServlet extends HttpServlet {
+@WebServlet("getTxView")
+public class AjaxTxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxDoTransactionServlet() {
+    public AjaxTxServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,9 +27,8 @@ public class AjaxDoTransactionServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("features/DoTransaction/doTransaction.html").forward(request, response);
+		System.out.println("AjaxTxServlet -GET");
+		request.getRequestDispatcher("features/doTransaction/doTransaction.html").forward(request, response);
 	}
-
-	
 
 }
